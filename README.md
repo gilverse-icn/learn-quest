@@ -16,12 +16,9 @@ Learn Quest is a plugin that helps you **learn while coding** with AI assistants
 
 ```bash
 # 1. Install the plugin
-git clone https://github.com/gilverse-icn/learn-quest.git ~/.claude/plugins/learn-quest
+/plugin install github:gilverse-icn/learn-quest
 
-# 2. Start Claude Code
-claude
-
-# 3. Run setup
+# 2. Run setup
 /learn-quest:setup
 ```
 
@@ -98,11 +95,7 @@ Change language with:
 ### Claude Code
 
 ```bash
-# Option 1: Clone to plugins directory (recommended)
-git clone https://github.com/gilverse-icn/learn-quest.git ~/.claude/plugins/learn-quest
-
-# Option 2: Use --plugin-dir option
-claude --plugin-dir /path/to/learn-quest
+/plugin install github:gilverse-icn/learn-quest
 ```
 
 ### First-Time Setup

@@ -16,12 +16,9 @@ Learn Quest는 AI 어시스턴트와 함께 코드를 작성하면서 **동시�
 
 ```bash
 # 1. 플러그인 설치
-git clone https://github.com/gilverse-icn/learn-quest.git ~/.claude/plugins/learn-quest
+/plugin install github:gilverse-icn/learn-quest
 
-# 2. Claude Code 시작
-claude
-
-# 3. 셋업 실행
+# 2. 셋업 실행
 /learn-quest:setup
 ```
 
@@ -98,11 +95,7 @@ Learn Quest는 다국어를 지원합니다:
 ### Claude Code
 
 ```bash
-# 옵션 1: 플러그인 디렉토리에 클론 (권장)
-git clone https://github.com/gilverse-icn/learn-quest.git ~/.claude/plugins/learn-quest
-
-# 옵션 2: --plugin-dir 옵션 사용
-claude --plugin-dir /path/to/learn-quest
+/plugin install github:gilverse-icn/learn-quest
 ```
 
 ### 첫 설정
