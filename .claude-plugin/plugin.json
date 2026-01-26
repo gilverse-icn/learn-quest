@@ -1,0 +1,23 @@
+{
+  "name": "learn-quest",
+  "version": "0.1.0",
+  "description": "RPG-style learning companion for AI coding assistants. Level up your skills while coding!",
+  "author": {
+    "name": "gilverse-icn",
+    "url": "https://github.com/gilverse-icn"
+  },
+  "homepage": "https://github.com/gilverse-icn/learn-quest",
+  "repository": "https://github.com/gilverse-icn/learn-quest",
+  "license": "MIT",
+  "keywords": [
+    "learning",
+    "education",
+    "rpg",
+    "gamification",
+    "skills",
+    "quiz",
+    "coding-assistant"
+  ],
+  "skills": "./skills/",
+  "hooks": "./hooks/hooks.json"
+}
