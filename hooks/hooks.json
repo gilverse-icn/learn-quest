@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "Code has been written/modified. Execute Learn Quest auto-explanation feature.\n\n## Check Configuration\n\nFirst, check settings from `~/.learn-quest/config.json` or `./.learn-quest/config.json`.\n\n- If `trigger.on_task_complete` is false, do not output anything.\n- If true, provide learning points in the format below.\n- Check `language` setting for output language (en/ko).\n\n## Output Format\n\n```\n🎮 LEARN QUEST - Learning Points\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n[If features.info is true]\n📚 What was done (Info)\n- Explain what was just implemented\n- Why it was implemented this way\n\n[If features.direction is true]\n🔄 Points to consider (Direction)\n- Optimization opportunities\n- Alternative approaches\n\n[If features.cs_knowledge is true]\n💡 Related CS Knowledge\n- Patterns/concepts used\n- Relevant computer science principles\n\n[If features.quiz is true]\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📝 Would you like to take a quiz? [Yes/No]\n```\n\n## Level-Based Depth\n\n- Bronze: Basic explanation, simple terminology\n- Silver: Implementation patterns, best practices\n- Gold: Trade-offs, optimization\n- Platinum: Architectural perspective\n- Diamond: Strategic/organizational perspective\n\n## Language Support\n\n- If `language` is \"ko\", output in Korean\n- If `language` is \"en\" or not set, output in English\n\n## Notes\n\n- Use default values if config file doesn't exist (trigger: true, level: silver, language: en)\n- Keep it concise, focus on key points\n- Maintain RPG theme"
+          }
+        ]
+      }
+    ]
+  }
+}
