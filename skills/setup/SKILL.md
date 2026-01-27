@@ -66,7 +66,37 @@ Default: 1, 2, 3 enabled / 4 disabled
 > Or type "all" for all features, "default" for recommended
 ```
 
-### Step 5: Confirmation
+### Step 5: Passive Mode
+```
+🎯 Enable Passive Learning Mode?
+
+Passive mode automatically adds learning elements when you ask questions.
+Instead of just getting answers, you'll also get:
+- Key insights and considerations
+- Related CS concepts
+- Occasional quick quizzes (if enabled)
+
+This helps you learn while coding, without extra effort.
+
+1) Yes, enable passive mode (Recommended)
+2) No, I'll use /learn-quest:explain when I want to learn
+
+> Enter 1 or 2
+```
+
+If user selects Yes, ask about frequency:
+```
+📊 How often should learning elements appear?
+
+1) Auto   - Adjusts based on your level and experience (Recommended)
+2) High   - Almost every opportunity
+3) Medium - Moderate frequency
+4) Low    - Rarely, only important concepts
+
+> Enter a number (1-4)
+```
+
+### Step 6: Confirmation
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✅ Setup Complete!
@@ -74,6 +104,7 @@ Default: 1, 2, 3 enabled / 4 disabled
 Your configuration:
 • Level: [selected level]
 • Language: English
+• Passive Mode: [ON/OFF] (frequency: [auto/high/medium/low])
 • Features: [enabled features list]
 
 Config saved to: ~/.learn-quest/config.json
@@ -122,7 +153,37 @@ You're ready to go! Try:
 > 또는 "all" (전체) / "default" (기본값)
 ```
 
-### Step 5: Confirmation
+### Step 5: Passive Mode
+```
+🎯 패시브 학습 모드를 활성화할까요?
+
+패시브 모드는 질문할 때 자동으로 학습 요소를 추가합니다.
+단순히 답변만 받는 게 아니라:
+- 핵심 인사이트와 고려사항
+- 관련 CS 개념
+- 간단한 퀴즈 (활성화된 경우)
+
+추가 노력 없이 코딩하면서 자연스럽게 배울 수 있어요.
+
+1) 네, 패시브 모드 활성화 (권장)
+2) 아니요, /learn-quest:explain으로 직접 학습할게요
+
+> 1 또는 2를 입력하세요
+```
+
+사용자가 1을 선택하면 빈도를 물어봅니다:
+```
+📊 학습 요소가 얼마나 자주 나타날까요?
+
+1) 자동   - 레벨과 학습량에 따라 조절 (권장)
+2) 높음   - 거의 모든 학습 기회에
+3) 보통   - 적당한 빈도로
+4) 낮음   - 드물게, 중요한 개념만
+
+> 번호를 입력하세요 (1-4)
+```
+
+### Step 6: Confirmation
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✅ 설정 완료!
@@ -130,6 +191,7 @@ You're ready to go! Try:
 설정 내용:
 • 레벨: [선택한 레벨]
 • 언어: 한국어
+• 패시브 모드: [ON/OFF] (빈도: [자동/높음/보통/낮음])
 • 기능: [활성화된 기능 목록]
 
 설정 저장 위치: ~/.learn-quest/config.json
@@ -162,6 +224,10 @@ You're ready to go! Try:
     "cs_knowledge": true,
     "quiz": false
   },
+  "passive": {
+    "enabled": true,
+    "frequency": "auto"
+  },
   "storage": "local"
 }
 ```
@@ -176,3 +242,13 @@ You're ready to go! Try:
 6. **Language mapping:**
    - 1 → "en"
    - 2 → "ko"
+
+7. **Passive mode mapping:**
+   - 1 → enabled: true
+   - 2 → enabled: false
+
+8. **Frequency mapping:**
+   - 1 → "auto"
+   - 2 → "high"
+   - 3 → "medium"
+   - 4 → "low"

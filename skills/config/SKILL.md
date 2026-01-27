@@ -43,9 +43,24 @@ Tip: Run /learn-quest:setup for interactive configuration!
     "cs_knowledge": true,
     "quiz": false
   },
+  "passive": {
+    "enabled": true,
+    "frequency": "auto"
+  },
   "storage": "local"
 }
 ```
+
+### Passive Mode
+
+Passive mode adds learning elements to regular Q&A conversations automatically.
+
+- **enabled**: When true, Claude detects learning opportunities and adds Learn Quest sections
+- **frequency**: Controls how often learning elements appear
+  - `auto`: Adjusts based on user level and learning history (recommended)
+  - `high`: Almost every learning opportunity
+  - `medium`: Moderate frequency
+  - `low`: Rarely, only for important concepts
 
 ## Command Handling
 
@@ -59,6 +74,7 @@ Display an interactive settings menu:
 Current configuration:
 • Level: [current level]
 • Auto-explanation: [ON/OFF]
+• Passive mode: [ON/OFF] (frequency: [auto/high/medium/low])
 • Info: [ON/OFF]
 • Direction: [ON/OFF]
 • CS Knowledge: [ON/OFF]
@@ -69,10 +85,11 @@ Current configuration:
 What would you like to change?
 1) Change level (Bronze/Silver/Gold/Platinum/Diamond)
 2) Toggle auto-explanation ON/OFF
-3) Configure individual features
-4) Change language
-5) Change storage location
-6) Reset to defaults
+3) Configure passive mode
+4) Configure individual features
+5) Change language
+6) Change storage location
+7) Reset to defaults
 
 > Enter a number
 ```
@@ -95,6 +112,8 @@ Directly change a specific setting.
 |-----|--------------|
 | `level` | bronze, silver, gold, platinum, diamond |
 | `trigger` | on, off |
+| `passive` | on, off |
+| `passive_frequency` | auto, high, medium, low |
 | `info` | on, off |
 | `direction` | on, off |
 | `cs_knowledge` | on, off |
@@ -114,6 +133,8 @@ If user provides an unknown key:
 Available settings:
 • level (bronze/silver/gold/platinum/diamond)
 • trigger (on/off)
+• passive (on/off)
+• passive_frequency (auto/high/medium/low)
 • info (on/off)
 • direction (on/off)
 • cs_knowledge (on/off)

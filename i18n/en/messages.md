@@ -10,6 +10,7 @@ This file contains English message templates used when `language: "en"` is set.
 Current configuration:
 • Level: [current level]
 • Auto-explanation: [ON/OFF]
+• Passive mode: [ON/OFF] (frequency: [auto/high/medium/low])
 • Info: [ON/OFF]
 • Direction: [ON/OFF]
 • CS Knowledge: [ON/OFF]
@@ -20,10 +21,11 @@ Current configuration:
 What would you like to change?
 1) Change level (Bronze/Silver/Gold/Platinum/Diamond)
 2) Toggle auto-explanation ON/OFF
-3) Configure individual features
-4) Change language
-5) Change storage location
-6) Reset to defaults
+3) Configure passive mode
+4) Configure individual features
+5) Change language
+6) Change storage location
+7) Reset to defaults
 
 > Enter a number
 ```
@@ -58,6 +60,50 @@ What would you like to learn about?
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📝 Would you like to take a quiz? [Yes/No]
+```
+
+## Passive Mode Output
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎮 LEARN QUEST (Passive)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔄 Points to consider
+- [key insight]
+
+💡 Related Concept
+- [CS concept briefly explained]
+
+📝 Quick Check: [simple question]
+```
+
+## Passive Mode Setup
+
+```
+🎯 Enable Passive Learning Mode?
+
+Passive mode automatically adds learning elements when you ask questions.
+Instead of just getting answers, you'll also get:
+- Key insights and considerations
+- Related CS concepts
+- Occasional quick quizzes (if enabled)
+
+This helps you learn while coding, without extra effort.
+
+1) Yes, enable passive mode (Recommended)
+2) No, I'll use /learn-quest:explain when I want to learn
+```
+
+## Frequency Selection
+
+```
+📊 How often should learning elements appear?
+
+1) Auto   - Adjusts based on your level and experience (Recommended)
+2) High   - Almost every opportunity
+3) Medium - Moderate frequency
+4) Low    - Rarely, only important concepts
 ```
 
 ## Quiz Messages

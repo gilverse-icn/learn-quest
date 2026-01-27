@@ -39,6 +39,17 @@ Automatically provides learning points after code is written/modified.
 - **💡 CS Knowledge**: Related computer science concepts
 - **📝 Quiz**: Test your understanding
 
+### 🎮 Passive Learning Mode
+Automatically adds learning elements when you ask questions - no special commands needed!
+
+When you ask "What is this?" or "How does this work?", Learn Quest:
+- Detects learning opportunities
+- Adds relevant insights and considerations
+- Suggests related concepts
+- Occasionally quizzes you (if enabled)
+
+**Frequency adjusts automatically** based on your level and learning history.
+
 ### 📖 Concept Explanation (`/learn-quest:explain`)
 Request detailed explanations of specific concepts or recent work.
 
@@ -125,6 +136,8 @@ This will guide you through:
 | `level` | bronze/silver/gold/platinum/diamond | silver | Learning level |
 | `language` | en/ko | en | Output language |
 | `trigger.on_task_complete` | true/false | true | Auto-explanation enabled |
+| `passive.enabled` | true/false | true | Passive learning mode |
+| `passive.frequency` | auto/high/medium/low | auto | How often to show learning elements |
 | `features.info` | true/false | true | Show what was done |
 | `features.direction` | true/false | true | Show improvement suggestions |
 | `features.cs_knowledge` | true/false | true | Show CS concepts |
