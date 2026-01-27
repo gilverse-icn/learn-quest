@@ -1,7 +1,6 @@
 ---
 name: setup
-description: Interactive initial setup for Learn Quest. Configure your learning level, language, and feature preferences.
-argument-hint: ""
+description: This skill should be used when the user asks to "setup learn quest", "initialize learn quest", "start learn quest setup", or wants to configure Learn Quest for the first time.
 ---
 
 # Learn Quest Setup

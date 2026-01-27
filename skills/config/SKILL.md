@@ -1,7 +1,6 @@
 ---
 name: config
-description: Manage Learn Quest settings. Configure learning level, auto-explanation triggers, feature toggles, and language preferences.
-argument-hint: "[show|reset|<key> <value>]"
+description: This skill should be used when the user asks to "configure learn quest", "change learn quest settings", "show learn quest config", "reset learn quest settings", or wants to modify learning level, language, or feature preferences.
 ---
 
 # Learn Quest Configuration Management

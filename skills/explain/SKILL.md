@@ -1,7 +1,6 @@
 ---
 name: explain
-description: Explains programming concepts or recent code changes at the user's skill level. Uses web search for latest info and references your codebase when relevant.
-argument-hint: "[concept] or empty"
+description: This skill should be used when the user asks to "explain a concept", "teach me about", "what is", "how does X work", or wants to learn about programming concepts, code changes, or technical topics at their skill level.
 ---
 
 # Learn Quest Concept Explanation
