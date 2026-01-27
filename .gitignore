@@ -9,6 +9,9 @@
 # Sisyphus planning files (personal workflow)
 .sisyphus/
 
+# Development progress tracking (local only)
+PROGRESS.md
+
 # Local learning progress data
 .learn-quest/
 *.progress.json
