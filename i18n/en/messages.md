@@ -127,7 +127,14 @@ This helps you learn while coding, without extra effort.
 ❌ Not quite!
 
 Correct answer: [answer]
-Explanation: [explanation]
+
+Why this is correct:
+[detailed explanation of the concept]
+
+Why your answer was off:
+[specific feedback on misconception]
+
+💡 Key takeaway: [one-sentence summary]
 ```
 
 ### Quiz Results
@@ -141,6 +148,93 @@ Strengths:
 
 Areas to improve:
 • [topics related to missed questions]
+```
+
+## Level-Based Quiz Templates
+
+### Bronze Quiz
+```
+📝 Quick Check
+
+Q: True or False?
+"[statement about concept]"
+
+[ True ] [ False ]
+```
+
+### Silver Quiz
+```
+📝 Code Challenge
+
+Q: Fill in the blank:
+```javascript
+[code with ???]
+```
+
+Options:
+A) [option]
+B) [option]
+C) [option]
+```
+
+### Gold Quiz
+```
+📝 Decision Time
+
+Q: Given this scenario:
+[scenario description]
+
+Which approach would you choose and why?
+A) [approach A]
+B) [approach B]
+
+> Type your answer with reasoning
+```
+
+### Platinum Quiz
+```
+📝 Architecture Check
+
+Q: Consider this system design:
+[design description]
+
+[architecture question]
+
+> Share your analysis
+```
+
+### Diamond Quiz
+```
+📝 Strategic Thinking
+
+Q: Your team is considering:
+[strategic scenario]
+
+What factors would you weigh in this decision?
+
+> Share your perspective
+```
+
+## Dynamic Difficulty Messages
+
+### Level Up Suggestion
+```
+🎯 Great job! You got [X]/[Y] correct recently.
+
+You seem ready for a bigger challenge!
+Would you like to try [next level] level questions?
+
+[ Yes, level up! ] [ No, stay at current level ]
+```
+
+### Level Changed
+```
+🎮 Level updated!
+
+Previous: [old level]
+New: [new level]
+
+Your next quiz will reflect the new difficulty.
 ```
 
 ## Level-Based Explanation Frames

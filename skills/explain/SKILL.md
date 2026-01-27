@@ -255,10 +255,11 @@ After providing the explanation, offer follow-up options:
 - Provide more detailed explanation on that specific area
 
 **2) Quiz me:** (only if `features.quiz` is enabled in config)
-- Generate 2-3 questions at user's level
-- Mix formats: multiple choice, true/false, code completion
-- Show answer + explanation immediately after each response
-- End with score summary
+- Generate 2-3 questions using Level-Based Question Perspective (see Quiz Generation Guide below)
+- Use quiz types appropriate for user's level
+- Show answer + detailed "why" explanation after each response
+- Track correct/incorrect for dynamic difficulty
+- End with score summary + level-up suggestion if 80%+ correct on recent 5
 
 **3) Done:**
 - End the explanation session
@@ -267,3 +268,53 @@ After providing the explanation, offer follow-up options:
 ### If user asks follow-up question directly:
 - Answer the question
 - Show the interaction options again
+
+## Quiz Generation Guide
+
+### Level-Based Question Perspective (나무 → 숲)
+
+| Level | Perspective | Question Focus |
+|-------|-------------|----------------|
+| Bronze | 나무 (Individual Concept) | "What is this?" - Definitions, T/F |
+| Silver | 나뭇가지 (Usage) | "How do I use this?" - Code blanks, output prediction |
+| Gold | 여러 나무 (Patterns) | "Why choose this?" - Comparisons, trade-offs |
+| Platinum | 숲 (Architecture) | "What's the role in the whole?" - Design decisions |
+| Diamond | 생태계 (Ecosystem) | "What's the organizational impact?" - Strategic judgment |
+
+### Quiz Types by Level
+
+**Bronze:**
+- True/False: "[concept] is [description]" (T/F)
+- Concept selection: "Which best describes [concept]?"
+
+**Silver:**
+- Code blanks: `const [state, ???] = useState(0)`
+- Output prediction: "What does this code output?"
+- Error finding: "Why doesn't this code work?"
+
+**Gold:**
+- Comparison: "In this situation, which is better: A or B?"
+- Optimization: "What's the performance issue in this code?"
+- Trade-offs: "What's the downside of this approach?"
+
+**Platinum:**
+- Design decisions: "How would you satisfy [requirement] in this structure?"
+- Scalability: "What happens when users increase 10x?"
+- Dependencies: "How does this change affect other modules?"
+
+**Diamond:**
+- Strategic judgment: "What's the team impact of adopting this technology?"
+- Long-term perspective: "How would you evaluate this decision in 6 months?"
+- Organizational impact: "How does this affect new team member onboarding?"
+
+### Scoring Rules
+
+- Full correct: ✅ Correct
+- Partial (missed key point): ❌ Wrong
+- Completely wrong: ❌ Wrong
+
+### Dynamic Difficulty
+
+Track accuracy of recent 5 questions:
+- 80%+ correct: Suggest "You're doing great! Want to try [next level] level questions?"
+- Below 80%: Do nothing (respect user's choice to stay at current level)
