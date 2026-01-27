@@ -15,10 +15,13 @@ Learn Quest는 AI 어시스턴트와 함께 코드를 작성하면서 **동시�
 ## 🚀 빠른 시작
 
 ```bash
-# 1. 플러그인 설치
-/plugin install github:gilverse-icn/learn-quest
+# 1. 마켓플레이스 추가
+/plugin marketplace add github:gilverse-icn/learn-quest
 
-# 2. 셋업 실행
+# 2. 플러그인 설치
+/plugin install learn-quest@learn-quest
+
+# 3. 셋업 실행
 /learn-quest:setup
 ```
 
@@ -95,7 +98,9 @@ Learn Quest는 다국어를 지원합니다:
 ### Claude Code
 
 ```bash
-/plugin install github:gilverse-icn/learn-quest
+# 마켓플레이스 추가 및 설치
+/plugin marketplace add github:gilverse-icn/learn-quest
+/plugin install learn-quest@learn-quest
 ```
 
 ### 첫 설정
@@ -185,7 +190,8 @@ You: /learn-quest:explain useEffect
 ```
 learn-quest/
 ├── .claude-plugin/
-│   └── plugin.json          # 플러그인 매니페스트
+│   ├── plugin.json          # 플러그인 매니페스트
+│   └── marketplace.json     # 마켓플레이스 카탈로그
 ├── skills/
 │   ├── setup/
 │   │   └── SKILL.md         # 셋업 마법사 스킬

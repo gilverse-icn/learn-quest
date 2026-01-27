@@ -15,10 +15,13 @@ Learn Quest is a plugin that helps you **learn while coding** with AI assistants
 ## 🚀 Quick Start
 
 ```bash
-# 1. Install the plugin
-/plugin install github:gilverse-icn/learn-quest
+# 1. Add the marketplace
+/plugin marketplace add github:gilverse-icn/learn-quest
 
-# 2. Run setup
+# 2. Install the plugin
+/plugin install learn-quest@learn-quest
+
+# 3. Run setup
 /learn-quest:setup
 ```
 
@@ -95,7 +98,9 @@ Change language with:
 ### Claude Code
 
 ```bash
-/plugin install github:gilverse-icn/learn-quest
+# Add marketplace and install
+/plugin marketplace add github:gilverse-icn/learn-quest
+/plugin install learn-quest@learn-quest
 ```
 
 ### First-Time Setup
@@ -185,7 +190,8 @@ You: /learn-quest:explain useEffect
 ```
 learn-quest/
 ├── .claude-plugin/
-│   └── plugin.json          # Plugin manifest
+│   ├── plugin.json          # Plugin manifest
+│   └── marketplace.json     # Marketplace catalog
 ├── skills/
 │   ├── setup/
 │   │   └── SKILL.md         # Setup wizard skill

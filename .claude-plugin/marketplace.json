@@ -1,0 +1,30 @@
+{
+  "name": "learn-quest",
+  "owner": {
+    "name": "gilverse-icn",
+    "email": "gilverse.icn@gmail.com"
+  },
+  "metadata": {
+    "description": "Learn Quest plugin marketplace - RPG-style learning companion for AI coding assistants"
+  },
+  "plugins": [
+    {
+      "name": "learn-quest",
+      "source": ".",
+      "description": "RPG-style learning companion for AI coding assistants. Level up your skills while coding!",
+      "version": "0.1.0",
+      "author": {
+        "name": "gilverse-icn"
+      },
+      "homepage": "https://github.com/gilverse-icn/learn-quest",
+      "repository": "https://github.com/gilverse-icn/learn-quest",
+      "license": "MIT",
+      "keywords": [
+        "learning",
+        "education",
+        "rpg",
+        "gamification"
+      ]
+    }
+  ]
+}
