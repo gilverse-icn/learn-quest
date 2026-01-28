@@ -12,11 +12,26 @@ AI coding assistants are convenient, but we often move on without understanding 
 
 Learn Quest is a plugin that helps you **learn while coding** with AI assistants, providing level-appropriate explanations and quizzes.
 
+## 📑 Table of Contents
+
+- [Quick Start](#-quick-start)
+- [Features](#-features)
+- [Level System](#-level-system)
+- [Language Support](#-language-support)
+- [Installation](#-installation)
+- [Configuration Options](#-configuration-options)
+- [Usage Examples](#-usage-examples)
+- [Project Structure](#-project-structure)
+- [Development](#-development)
+- [Roadmap](#️-roadmap)
+- [Contributing](#-contributing)
+- [License](#-license)
+
 ## 🚀 Quick Start
 
 ```bash
 # 1. Add the marketplace
-/plugin marketplace add github:gilverse-icn/learn-quest
+/plugin marketplace add https://github.com/gilverse-icn/learn-quest
 
 # 2. Install the plugin
 /plugin install learn-quest@learn-quest
@@ -37,7 +52,7 @@ Automatically provides learning points after code is written/modified.
 - **📚 Info**: What was done and why
 - **🔄 Direction**: Optimization opportunities, alternative approaches
 - **💡 CS Knowledge**: Related computer science concepts
-- **📝 Quiz**: Test your understanding
+- **📝 Quiz**: Level-appropriate questions (T/F for Bronze, code blanks for Silver, trade-off comparisons for Gold, etc.)
 
 ### 🎮 Passive Learning Mode
 Automatically adds learning elements when you ask questions - no special commands needed!
@@ -85,13 +100,13 @@ Configure your learning level, feature toggles, and language.
 
 A 5-tier rank system based on experience, providing depth-appropriate explanations.
 
-| Rank | Experience | Learning Focus |
-|------|------------|----------------|
-| **Bronze** | 0-2 years | Basic syntax, fundamental concepts |
-| **Silver** | 2-4 years | Implementation patterns, best practices |
-| **Gold** | 4-7 years | Optimization, trade-offs |
-| **Platinum** | 7-10 years | Architecture, system design |
-| **Diamond** | 10+ years | Technical strategy, organizational impact |
+| Rank | Perspective | Learning Focus |
+|------|-------------|----------------|
+| **Bronze** | "What is this?" | Basic syntax, fundamental concepts |
+| **Silver** | "How do I use this?" | Implementation patterns, best practices |
+| **Gold** | "Why this approach?" | Optimization, trade-offs |
+| **Platinum** | "What's the big picture?" | Architecture, system design |
+| **Diamond** | "What's the strategic view?" | Technical strategy, organizational impact |
 
 ## 🌍 Language Support
 
@@ -110,7 +125,7 @@ Change language with:
 
 ```bash
 # Add marketplace and install
-/plugin marketplace add github:gilverse-icn/learn-quest
+/plugin marketplace add https://github.com/gilverse-icn/learn-quest
 /plugin install learn-quest@learn-quest
 ```
 
@@ -124,8 +139,9 @@ After installation, run the setup wizard:
 
 This will guide you through:
 1. Language selection (English / 한국어)
-2. Experience level (Bronze → Diamond)
-3. Feature preferences (Info, Direction, CS Knowledge, Quiz)
+2. Scenario question - AI analyzes your approach to suggest a level
+3. Level confirmation or adjustment
+4. Individual feature setup with visual examples
 
 **Or skip setup** and start using directly - Learn Quest will create default settings automatically.
 

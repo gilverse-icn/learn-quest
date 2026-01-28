@@ -49,7 +49,12 @@ What do you do first, before writing any code?"
 > Please share your approach freely
 ```
 
-**IMPORTANT:** Wait for user's free-form answer. Do NOT provide options.
+**CRITICAL IMPLEMENTATION NOTE:**
+- Do NOT use AskUserQuestion for this step (it forces multiple choice)
+- Simply output the question text above and STOP
+- Wait for the user to type their free-form answer naturally
+- The user's next message will contain their answer
+- Then proceed to Step 4 to analyze their response
 
 ### Step 4: Level Suggestion
 
@@ -260,7 +265,12 @@ You're ready to go! Try:
 > 자유롭게 답변해주세요
 ```
 
-**IMPORTANT:** Wait for user's free-form answer. Do NOT provide options.
+**CRITICAL IMPLEMENTATION NOTE:**
+- Do NOT use AskUserQuestion for this step (it forces multiple choice)
+- Simply output the question text above and STOP
+- Wait for the user to type their free-form answer naturally
+- The user's next message will contain their answer
+- Then proceed to Step 4 to analyze their response
 
 ### Step 4: Level Suggestion
 
@@ -480,8 +490,11 @@ Use these when suggesting a level to the user:
 
 ## Implementation Notes
 
-1. **Use AskUserQuestion tool** for each step to get user input
-2. **For Step 3 (scenario question)**: Use open-ended input, analyze the response
+1. **Use AskUserQuestion tool** for most steps to get user input
+2. **EXCEPTION - Step 3 (scenario question)**:
+   - Do NOT use AskUserQuestion (it requires multiple choice options)
+   - Instead, output the question as plain text and wait for user's next message
+   - Analyze the user's free-form response to determine their level
 3. **Save config** to `~/.learn-quest/config.json`
 4. **Create directory** if `~/.learn-quest/` doesn't exist
 5. **Config format:**
