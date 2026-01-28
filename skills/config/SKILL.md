@@ -54,9 +54,9 @@ Tip: Run /learn-quest:setup for interactive configuration!
 }
 ```
 
-### Passive Mode
+### Learning Timing: While Working (passive)
 
-Passive mode adds learning elements to regular Q&A conversations automatically.
+Real-time learning during coding sessions. Claude automatically adds learning points while working.
 
 - **enabled**: When true, Claude detects learning opportunities and adds Learn Quest sections
 - **frequency**: Controls how often learning elements appear
@@ -65,12 +65,12 @@ Passive mode adds learning elements to regular Q&A conversations automatically.
   - `medium`: Moderate frequency
   - `low`: Rarely, only for important concepts
 
-### Stash Mode
+### Learning Timing: Save for Later (stash)
 
-Stash mode allows users to save learning points for later study.
+Save learning points when busy, study them later with `/learn-quest:study`.
 
 - **enabled**: When true, stash features are available
-- **prompt_on_complete**: When true, prompts user to stash after task completion
+- **prompt_on_complete**: When true, suggests saving after task completion
   - Detects completion signals: "고마워", "됐어", "done", "thanks", etc.
   - Shows: "지금은 바쁘시죠? 학습 포인트만 저장해두고, 나중에 천천히 공부하세요."
 
@@ -86,8 +86,9 @@ Display an interactive settings menu:
 Current configuration:
 • Level: [current level]
 • Auto-explanation: [ON/OFF]
-• Passive mode: [ON/OFF] (frequency: [auto/high/medium/low])
-• Stash mode: [ON/OFF] (prompt on complete: [ON/OFF])
+• Learning timing:
+  - While working (real-time): [ON/OFF] (frequency: [auto/high/medium/low])
+  - Save for later: [ON/OFF] (prompt on complete: [ON/OFF])
 • Info: [ON/OFF]
 • Direction: [ON/OFF]
 • CS Knowledge: [ON/OFF]
@@ -98,12 +99,11 @@ Current configuration:
 What would you like to change?
 1) Change level (Bronze/Silver/Gold/Platinum/Diamond)
 2) Toggle auto-explanation ON/OFF
-3) Configure passive mode
-4) Configure stash mode
-5) Configure individual features
-6) Change language
-7) Change storage location
-8) Reset to defaults
+3) Configure learning timing (real-time / save for later)
+4) Configure individual features
+5) Change language
+6) Change storage location
+7) Reset to defaults
 
 > Enter a number
 ```
@@ -122,20 +122,20 @@ Directly change a specific setting.
 
 **Supported keys and values:**
 
-| Key | Valid Values |
-|-----|--------------|
-| `level` | bronze, silver, gold, platinum, diamond |
-| `trigger` | on, off |
-| `passive` | on, off |
-| `passive_frequency` | auto, high, medium, low |
-| `stash` | on, off |
-| `stash_prompt` | on, off |
-| `info` | on, off |
-| `direction` | on, off |
-| `cs_knowledge` | on, off |
-| `quiz` | on, off |
-| `language` | en, ko |
-| `storage` | local, project |
+| Key | Description | Valid Values |
+|-----|-------------|--------------|
+| `level` | Learning level | bronze, silver, gold, platinum, diamond |
+| `trigger` | Auto-explanation on task complete | on, off |
+| `passive` | While working (real-time learning) | on, off |
+| `passive_frequency` | Real-time learning frequency | auto, high, medium, low |
+| `stash` | Save for later (stash learning) | on, off |
+| `stash_prompt` | Suggest saving on task complete | on, off |
+| `info` | What & why explanations | on, off |
+| `direction` | Improvement suggestions | on, off |
+| `cs_knowledge` | Related CS concepts | on, off |
+| `quiz` | Understanding quizzes | on, off |
+| `language` | Display language | en, ko |
+| `storage` | Config file location | local, project |
 
 ## Error Handling
 
@@ -147,18 +147,18 @@ If user provides an unknown key:
 ❌ Unknown setting: "[key]"
 
 Available settings:
-• level (bronze/silver/gold/platinum/diamond)
-• trigger (on/off)
-• passive (on/off)
-• passive_frequency (auto/high/medium/low)
-• stash (on/off)
-• stash_prompt (on/off)
-• info (on/off)
-• direction (on/off)
-• cs_knowledge (on/off)
-• quiz (on/off)
-• language (en/ko)
-• storage (local/project)
+• level (bronze/silver/gold/platinum/diamond) - Learning level
+• trigger (on/off) - Auto-explanation on task complete
+• passive (on/off) - While working (real-time learning)
+• passive_frequency (auto/high/medium/low) - Real-time learning frequency
+• stash (on/off) - Save for later (stash learning)
+• stash_prompt (on/off) - Suggest saving on task complete
+• info (on/off) - What & why explanations
+• direction (on/off) - Improvement suggestions
+• cs_knowledge (on/off) - Related CS concepts
+• quiz (on/off) - Understanding quizzes
+• language (en/ko) - Display language
+• storage (local/project) - Config file location
 
 Example: /learn-quest:config level gold
 ```

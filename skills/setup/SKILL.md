@@ -180,35 +180,31 @@ Enable this feature?
 > Enter 1 or 2
 ```
 
-### Step 9: Passive Mode
+### Step 9: Learning Timing
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🎯 Passive Learning Mode
+🎯 Learning Timing
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Without running /learn-quest:explain, Claude will
-automatically add learning points while working.
+When should Learn Quest help you learn?
 
-Example:
-┌─────────────────────────────
-│ Claude: Done! Created the API call function.
-│
-│ 🎮 LEARN QUEST (Passive)
-│ ━━━━━━━━━━━━━━━━━━━━━━━━━━━
-│ 💡 Why async/await here:
-│    Avoids callback hell, improves readability
-│ 📝 Quick: When would you use Promise.all()?
-└─────────────────────────────
+1) While working (Recommended)
+   → Get explanations in real-time as Claude writes code
 
-Enable Passive Mode?
-1) Yes (Recommended) - Learn while you code
-2) No - I'll use /learn-quest:explain manually
+2) Save for later
+   → Save learning points when busy, study when free
 
-> Enter 1 or 2
+3) Both
+   → Real-time explanations + save for later
+
+4) Only when I ask
+   → Only when running /learn-quest:explain
+
+> Enter a number (1-4)
 ```
 
-If user selects Yes, ask about frequency:
+If user selects 1 or 3 (includes real-time), ask about frequency:
 ```
 📊 How often should learning elements appear?
 
@@ -220,6 +216,25 @@ If user selects Yes, ask about frequency:
 > Enter a number (1-4)
 ```
 
+If user selects 2 or 3 (includes save for later), ask about prompt:
+```
+📦 Prompt to save after completing tasks?
+
+When you finish a task (e.g., "thanks", "done"),
+Learn Quest can ask if you want to save learning points.
+
+1) Yes (Recommended) - Remind me to save
+2) No - I'll save manually with /learn-quest:stash
+
+> Enter 1 or 2
+```
+
+**Mapping to config:**
+- Option 1: `passive.enabled: true`, `stash.enabled: false`
+- Option 2: `passive.enabled: false`, `stash.enabled: true`
+- Option 3: `passive.enabled: true`, `stash.enabled: true`
+- Option 4: `passive.enabled: false`, `stash.enabled: false`
+
 ### Step 10: Confirmation
 
 ```
@@ -229,7 +244,9 @@ If user selects Yes, ask about frequency:
 Your configuration:
 • Level: [selected level]
 • Language: English
-• Passive Mode: [ON/OFF] (frequency: [frequency])
+• Learning timing:
+  - While working: [ON/OFF] (frequency: [frequency])
+  - Save for later: [ON/OFF] (prompt on complete: [ON/OFF])
 • Features:
   - Info: [ON/OFF]
   - Direction: [ON/OFF]
@@ -240,6 +257,7 @@ Config saved to: ~/.learn-quest/config.json
 
 You're ready to go! Try:
 • /learn-quest:explain <concept> - Learn about something
+• /learn-quest:stash - Save learning points for later
 • /learn-quest:config - Change settings anytime
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
@@ -396,37 +414,33 @@ Claude가 작업 완료 후 이런 제안을 보게 돼요:
 > 1 또는 2를 입력하세요
 ```
 
-### Step 9: Passive Mode
+### Step 9: Learning Timing
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🎯 패시브 학습 모드
+🎯 학습 타이밍 설정
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-/learn-quest:explain을 직접 실행하지 않아도
-Claude가 작업하면서 자동으로 학습 포인트를 알려줘요.
+Learn Quest가 언제 학습을 도와줄까요?
 
-예시:
-┌─────────────────────────────
-│ Claude: 완료! API 호출 함수 만들었어요.
-│
-│ 🎮 LEARN QUEST (패시브)
-│ ━━━━━━━━━━━━━━━━━━━━━━━━━━━
-│ 💡 여기서 async/await를 쓴 이유:
-│    콜백 지옥을 피하고 가독성을 높이기 위함
-│ 📝 퀵 체크: Promise.all()은 언제 쓰면 좋을까요?
-└─────────────────────────────
+1) 작업 중 바로 (권장)
+   → Claude가 코드 작성하면서 실시간으로 설명
 
-패시브 모드를 활성화할까요?
-1) 예 (권장) - 코딩하면서 자연스럽게 학습
-2) 아니오 - /learn-quest:explain으로 직접 학습
+2) 나중에 따로
+   → 바쁠 때 저장해두고, 시간 날 때 공부
 
-> 1 또는 2를 입력하세요
+3) 둘 다
+   → 실시간 설명도 받고, 저장도 가능
+
+4) 직접 요청할 때만
+   → /learn-quest:explain 실행했을 때만 학습
+
+> 번호를 입력하세요 (1-4)
 ```
 
-사용자가 1을 선택하면 빈도를 물어봅니다:
+사용자가 1 또는 3을 선택하면 (실시간 학습 포함) 빈도를 물어봅니다:
 ```
-📊 학습 요소가 얼마나 자주 나타날까요?
+📊 학습 설명이 얼마나 자주 나타날까요?
 
 1) 자동   - 상황에 맞게 조절 (권장)
 2) 높음   - 거의 모든 학습 기회에
@@ -435,6 +449,25 @@ Claude가 작업하면서 자동으로 학습 포인트를 알려줘요.
 
 > 번호를 입력하세요 (1-4)
 ```
+
+사용자가 2 또는 3을 선택하면 (나중에 학습 포함) 저장 제안을 물어봅니다:
+```
+📦 작업 완료 시 저장을 제안할까요?
+
+작업이 끝나면 (예: "고마워", "됐어")
+학습 포인트를 저장할지 물어볼 수 있어요.
+
+1) 예 (권장) - 저장할지 물어보기
+2) 아니오 - /learn-quest:stash로 직접 저장
+
+> 1 또는 2를 입력하세요
+```
+
+**설정값 매핑:**
+- 1번: `passive.enabled: true`, `stash.enabled: false`
+- 2번: `passive.enabled: false`, `stash.enabled: true`
+- 3번: `passive.enabled: true`, `stash.enabled: true`
+- 4번: `passive.enabled: false`, `stash.enabled: false`
 
 ### Step 10: Confirmation
 
@@ -445,7 +478,9 @@ Claude가 작업하면서 자동으로 학습 포인트를 알려줘요.
 설정 내용:
 • 레벨: [선택한 레벨]
 • 언어: 한국어
-• 패시브 모드: [ON/OFF] (빈도: [빈도])
+• 학습 타이밍:
+  - 작업 중 실시간 학습: [ON/OFF] (빈도: [빈도])
+  - 나중에 학습 (저장): [ON/OFF] (완료 시 제안: [ON/OFF])
 • 기능:
   - Info: [ON/OFF]
   - Direction: [ON/OFF]
@@ -456,6 +491,7 @@ Claude가 작업하면서 자동으로 학습 포인트를 알려줘요.
 
 이제 시작하세요!
 • /learn-quest:explain <개념> - 개념 설명 받기
+• /learn-quest:stash - 학습 포인트 저장
 • /learn-quest:config - 설정 변경
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
