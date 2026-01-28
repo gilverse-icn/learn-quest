@@ -65,6 +65,27 @@ Learn Quest는 AI 어시스턴트와 함께 코드를 작성하면서 **동시�
 
 **빈도는 자동 조절** - 레벨과 학습 기록에 따라 조절됩니다.
 
+### 📦 Stash 모드 (`/learn-quest:stash`, `/learn-quest:study`)
+지금 당장 공부할 시간이 없나요? 학습 포인트만 저장해두고 나중에 공부하세요!
+
+**워크플로우:**
+1. 평소처럼 작업하기
+2. 완료되면 Learn Quest가 물어봄: "저장해둘까요?"
+3. "저장"을 선택하면 학습 포인트 저장
+4. 나중에 여유있을 때 `/learn-quest:study`로 학습
+
+```bash
+# 메모와 함께 수동 저장
+/learn-quest:stash "로그인 기능 완료"
+
+# 저장된 내용 학습
+/learn-quest:study              # 목록 보기
+/learn-quest:study today        # 오늘 저장한 것만
+/learn-quest:study jwt          # 키워드 검색
+```
+
+**자동 감지:** Learn Quest가 완료 신호("고마워", "됐어", "done")를 감지하면 저장할지 물어봐요.
+
 ### 📖 개념 설명 (`/learn-quest:explain`)
 특정 개념이나 최근 작업에 대해 상세 설명을 요청할 수 있습니다.
 
@@ -154,6 +175,8 @@ Learn Quest는 다국어를 지원합니다:
 | `trigger.on_task_complete` | true/false | true | 자동 설명 활성화 |
 | `passive.enabled` | true/false | true | 패시브 학습 모드 |
 | `passive.frequency` | auto/high/medium/low | auto | 학습 요소 빈도 |
+| `stash.enabled` | true/false | true | Stash 모드 활성화 |
+| `stash.prompt_on_complete` | true/false | true | 완료 시 저장 여부 질문 |
 | `features.info` | true/false | true | 작업 내용 표시 |
 | `features.direction` | true/false | true | 개선 제안 표시 |
 | `features.cs_knowledge` | true/false | true | CS 개념 표시 |
@@ -214,6 +237,67 @@ You: /learn-quest:explain useEffect
 3) 완료 - 작업 계속
 ```
 
+### Stash 모드
+
+```
+You: "API에 에러 핸들링 추가해줘"
+
+Claude: [코드 작성] 완료했어요!
+
+🎮 LEARN QUEST - Stash
+━━━━━━━━━━━━━━━━━━━━━
+📦 지금은 바쁘시죠?
+   학습 포인트만 저장해두고, 나중에 천천히 공부하세요.
+
+1) 저장해두기
+2) 괜찮아, 넘어갈게
+
+You: 1
+
+✅ 저장 완료!
+
+📦 API 에러 핸들링 및 재시도 로직
+   에러 바운더리, 지수 백오프, 서킷 브레이커 패턴
+
+💡 학습 포인트 3개 저장됨
+
+나중에 /learn-quest:study 로 학습하세요!
+```
+
+### Study 모드
+
+```
+You: /learn-quest:study
+
+🎮 LEARN QUEST - Study
+━━━━━━━━━━━━━━━━━━━━━
+
+📚 저장된 학습 포인트
+
+1) [01/28] API 에러 핸들링 및 재시도 로직
+2) [01/27] JWT 인증 구현
+3) [01/25] React Query 캐싱 전략
+
+> 번호를 선택하세요
+
+You: 1
+
+🎮 LEARN QUEST - Study
+━━━━━━━━━━━━━━━━━━━━━
+
+📚 API 에러 핸들링 및 재시도 로직
+   저장일: 2025-01-28
+
+[레벨에 맞는 상세 설명...]
+
+━━━━━━━━━━━━━━━━━━━━━
+🎯 다음은?
+
+1) 더 깊이
+2) 학습 완료 표시
+3) 목록으로
+```
+
 ## 📁 프로젝트 구조
 
 ```
@@ -226,10 +310,17 @@ learn-quest/
 │   │   └── SKILL.md         # 셋업 마법사 스킬
 │   ├── config/
 │   │   └── SKILL.md         # 설정 스킬
-│   └── explain/
-│       └── SKILL.md         # 설명 스킬
+│   ├── explain/
+│   │   └── SKILL.md         # 설명 스킬
+│   ├── stash/
+│   │   └── SKILL.md         # Stash 스킬 (나중에 학습용)
+│   └── study/
+│       └── SKILL.md         # Study 스킬 (저장된 내용 학습)
 ├── hooks/
-│   └── hooks.json           # 자동 설명 Hook
+│   └── hooks.json           # Hook 설정
+├── hooks-handlers/
+│   ├── session-start.sh     # 세션 시작 핸들러
+│   └── completion-detect.sh # 완료 감지 핸들러
 ├── i18n/
 │   ├── en/
 │   │   └── messages.md      # 영어 템플릿

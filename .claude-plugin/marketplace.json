@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "learn-quest",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Learn Quest plugin marketplace - RPG-style learning companion for AI coding assistants",
   "owner": {
     "name": "gilverse-icn",
@@ -11,7 +11,7 @@
     {
       "name": "learn-quest",
       "description": "RPG-style learning companion for AI coding assistants. Level up your skills while coding!",
-      "version": "0.1.1",
+      "version": "0.2.0",
       "author": {
         "name": "gilverse-icn",
         "email": "oio3215@naver.com"

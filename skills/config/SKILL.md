@@ -46,6 +46,10 @@ Tip: Run /learn-quest:setup for interactive configuration!
     "enabled": true,
     "frequency": "auto"
   },
+  "stash": {
+    "enabled": true,
+    "prompt_on_complete": true
+  },
   "storage": "local"
 }
 ```
@@ -61,6 +65,15 @@ Passive mode adds learning elements to regular Q&A conversations automatically.
   - `medium`: Moderate frequency
   - `low`: Rarely, only for important concepts
 
+### Stash Mode
+
+Stash mode allows users to save learning points for later study.
+
+- **enabled**: When true, stash features are available
+- **prompt_on_complete**: When true, prompts user to stash after task completion
+  - Detects completion signals: "고마워", "됐어", "done", "thanks", etc.
+  - Shows: "지금은 바쁘시죠? 학습 포인트만 저장해두고, 나중에 천천히 공부하세요."
+
 ## Command Handling
 
 ### No arguments (`/learn-quest:config`)
@@ -74,6 +87,7 @@ Current configuration:
 • Level: [current level]
 • Auto-explanation: [ON/OFF]
 • Passive mode: [ON/OFF] (frequency: [auto/high/medium/low])
+• Stash mode: [ON/OFF] (prompt on complete: [ON/OFF])
 • Info: [ON/OFF]
 • Direction: [ON/OFF]
 • CS Knowledge: [ON/OFF]
@@ -85,10 +99,11 @@ What would you like to change?
 1) Change level (Bronze/Silver/Gold/Platinum/Diamond)
 2) Toggle auto-explanation ON/OFF
 3) Configure passive mode
-4) Configure individual features
-5) Change language
-6) Change storage location
-7) Reset to defaults
+4) Configure stash mode
+5) Configure individual features
+6) Change language
+7) Change storage location
+8) Reset to defaults
 
 > Enter a number
 ```
@@ -113,6 +128,8 @@ Directly change a specific setting.
 | `trigger` | on, off |
 | `passive` | on, off |
 | `passive_frequency` | auto, high, medium, low |
+| `stash` | on, off |
+| `stash_prompt` | on, off |
 | `info` | on, off |
 | `direction` | on, off |
 | `cs_knowledge` | on, off |
@@ -134,6 +151,8 @@ Available settings:
 • trigger (on/off)
 • passive (on/off)
 • passive_frequency (auto/high/medium/low)
+• stash (on/off)
+• stash_prompt (on/off)
 • info (on/off)
 • direction (on/off)
 • cs_knowledge (on/off)

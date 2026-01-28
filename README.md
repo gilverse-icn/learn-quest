@@ -65,6 +65,27 @@ When you ask "What is this?" or "How does this work?", Learn Quest:
 
 **Frequency adjusts automatically** based on your level and learning history.
 
+### 📦 Stash Mode (`/learn-quest:stash`, `/learn-quest:study`)
+Too busy to learn right now? Save learning points for later!
+
+**Workflow:**
+1. Work on your task as usual
+2. When you finish, Learn Quest asks: "Save for later study?"
+3. Select "Save" to stash the learning points
+4. Study later when you have time with `/learn-quest:study`
+
+```bash
+# Manual stash with memo
+/learn-quest:stash "Login feature complete"
+
+# Study saved points
+/learn-quest:study              # Show list
+/learn-quest:study today        # Today's only
+/learn-quest:study jwt          # Search by keyword
+```
+
+**Auto-detection:** Learn Quest detects completion signals ("thanks", "done", "완료") and prompts you to stash.
+
 ### 📖 Concept Explanation (`/learn-quest:explain`)
 Request detailed explanations of specific concepts or recent work.
 
@@ -154,6 +175,8 @@ This will guide you through:
 | `trigger.on_task_complete` | true/false | true | Auto-explanation enabled |
 | `passive.enabled` | true/false | true | Passive learning mode |
 | `passive.frequency` | auto/high/medium/low | auto | How often to show learning elements |
+| `stash.enabled` | true/false | true | Stash mode enabled |
+| `stash.prompt_on_complete` | true/false | true | Prompt to stash on task completion |
 | `features.info` | true/false | true | Show what was done |
 | `features.direction` | true/false | true | Show improvement suggestions |
 | `features.cs_knowledge` | true/false | true | Show CS concepts |
@@ -214,6 +237,67 @@ You: /learn-quest:explain useEffect
 3) Done - continue working
 ```
 
+### Stash Mode
+
+```
+You: "Add error handling to the API"
+
+Claude: [writes code] Done!
+
+🎮 LEARN QUEST - Stash
+━━━━━━━━━━━━━━━━━━━━━
+📦 Busy right now?
+   Save the learning points and study later at your own pace.
+
+1) Save for later
+2) Skip
+
+You: 1
+
+✅ Saved!
+
+📦 API Error Handling with Retry Logic
+   Error boundaries, exponential backoff, circuit breaker pattern
+
+💡 3 learning points saved
+
+Study later with /learn-quest:study
+```
+
+### Study Mode
+
+```
+You: /learn-quest:study
+
+🎮 LEARN QUEST - Study
+━━━━━━━━━━━━━━━━━━━━━
+
+📚 Saved Learning Points
+
+1) [01/28] API Error Handling with Retry Logic
+2) [01/27] JWT Authentication Implementation
+3) [01/25] React Query Caching Strategy
+
+> Select a number
+
+You: 1
+
+🎮 LEARN QUEST - Study
+━━━━━━━━━━━━━━━━━━━━━
+
+📚 API Error Handling with Retry Logic
+   Saved: 2025-01-28
+
+[Level-appropriate detailed explanation...]
+
+━━━━━━━━━━━━━━━━━━━━━
+🎯 What's next?
+
+1) Go deeper
+2) Mark as learned
+3) Back to list
+```
+
 ## 📁 Project Structure
 
 ```
@@ -226,10 +310,17 @@ learn-quest/
 │   │   └── SKILL.md         # Setup wizard skill
 │   ├── config/
 │   │   └── SKILL.md         # Config skill
-│   └── explain/
-│       └── SKILL.md         # Explain skill
+│   ├── explain/
+│   │   └── SKILL.md         # Explain skill
+│   ├── stash/
+│   │   └── SKILL.md         # Stash skill (save for later)
+│   └── study/
+│       └── SKILL.md         # Study skill (learn stashed items)
 ├── hooks/
-│   └── hooks.json           # Auto-explanation hook
+│   └── hooks.json           # Hooks configuration
+├── hooks-handlers/
+│   ├── session-start.sh     # Session start handler
+│   └── completion-detect.sh # Completion detection handler
 ├── i18n/
 │   ├── en/
 │   │   └── messages.md      # English templates
