@@ -10,19 +10,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.2.1] - 2026-01-28
 
 ### Changed
-- **Learning Timing UX Overhaul** - Setup/Config에서 용어 및 플로우 개선
-  - "패시브 모드", "Stash 모드" → "학습 타이밍" 개념으로 통합
-  - Setup Step 9를 4가지 선택지로 재설계:
-    1. 작업 중 바로 (실시간 학습)
-    2. 나중에 따로 (저장 후 학습)
-    3. 둘 다
-    4. 직접 요청할 때만
-  - 선택에 따라 조건부 후속 질문 (빈도, 저장 제안)
-  - Setup Confirmation에 학습 타이밍 정보 반영 (영문/한글)
-  - Config 메뉴에서 패시브/스태시를 "Learning timing" 하위로 그룹화
-  - Config key/value 테이블에 Description 컬럼 추가
-  - Config 에러 메시지에 각 설정별 설명 추가
-  - Setup에 누락됐던 Stash 설정 단계 추가
+- **Learning Timing UX Overhaul** - Improved terminology and flow in Setup/Config
+  - Unified "Passive Mode" and "Stash Mode" into a single "Learning Timing" concept
+  - Redesigned Setup Step 9 with 4 clear options:
+    1. While working (real-time learning)
+    2. Save for later (stash and study)
+    3. Both
+    4. Only when I ask
+  - Added conditional follow-up questions based on selection (frequency, save prompt)
+  - Reflected learning timing info in Setup Confirmation (English/Korean)
+  - Grouped passive/stash under "Learning timing" in Config menu
+  - Added Description column to Config key/value table
+  - Added per-setting descriptions to Config error messages
+  - Added missing Stash configuration step to Setup flow
 
 ## [0.2.0] - 2025-01-28
 
@@ -30,7 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Stash Mode** - "Capture now, learn later" workflow
   - `/learn-quest:stash [memo]` - Save learning points for later study
   - `/learn-quest:study [filter]` - Review and learn from stashed items
-  - Auto-detection of task completion signals ("고마워", "done", "완료", etc.)
+  - Auto-detection of task completion signals ("thanks", "done", etc.)
   - Prompts user to stash when task is completed
   - Learning points stored in `~/.learn-quest/stash/`
   - Mark items as "learned" after studying
@@ -52,7 +52,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - **Quiz System Enhancement**
-  - Level-based question perspective (나무→숲): Bronze focuses on "what", Diamond on strategic impact
+  - Level-based question perspective (tree→forest): Bronze focuses on "what", Diamond on strategic impact
   - Quiz types by level: T/F for Bronze, code blanks for Silver, trade-off comparisons for Gold, etc.
   - Dynamic difficulty suggestion: prompts level-up when 80%+ correct on recent 5 questions
   - Enhanced wrong answer feedback with "why correct", "where you went wrong", and key takeaway
