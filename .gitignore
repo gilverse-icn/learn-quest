@@ -9,6 +9,9 @@
 # Sisyphus planning files (personal workflow)
 .sisyphus/
 
+# Claude Code project settings (local workflow)
+.claude/
+
 # Development progress tracking (local only)
 PROGRESS.md
 
