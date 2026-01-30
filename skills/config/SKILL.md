@@ -34,17 +34,16 @@ Tip: Run /learn-quest:setup for interactive configuration!
   "level": "silver",
   "language": "en",
   "trigger": {
-    "on_task_complete": true
+    "on_code_write": true,
+    "on_task_complete": true,
+    "on_question": false,
+    "on_all": false
   },
   "features": {
     "info": true,
     "direction": true,
     "cs_knowledge": true,
     "quiz": false
-  },
-  "passive": {
-    "enabled": true,
-    "frequency": "auto"
   },
   "stash": {
     "enabled": true,
@@ -54,18 +53,18 @@ Tip: Run /learn-quest:setup for interactive configuration!
 }
 ```
 
-### Learning Timing: While Working (passive)
+### Learning Triggers
 
-Real-time learning during coding sessions. Claude automatically adds learning points while working.
+Controls **when** learning points are provided. Multiple triggers can be enabled simultaneously.
 
-- **enabled**: When true, Claude detects learning opportunities and adds Learn Quest sections
-- **frequency**: Controls how often learning elements appear
-  - `auto`: Adjusts based on user level and learning history (recommended)
-  - `high`: Almost every learning opportunity
-  - `medium`: Moderate frequency
-  - `low`: Rarely, only for important concepts
+- **on_code_write**: When Claude writes or modifies code
+- **on_task_complete**: When a task or feature is completed
+- **on_question**: When Claude answers questions
+- **on_all**: Always provide learning points (overrides other triggers)
 
-### Learning Timing: Save for Later (stash)
+If all triggers are `false`, learning points are only shown with `/learn-quest:explain`.
+
+### Stash Mode
 
 Save learning points when busy, study them later with `/learn-quest:study`.
 
@@ -85,21 +84,24 @@ Display an interactive settings menu:
 
 Current configuration:
 • Level: [current level]
-• Auto-explanation: [ON/OFF]
-• Learning timing:
-  - While working (real-time): [ON/OFF] (frequency: [auto/high/medium/low])
-  - Save for later: [ON/OFF] (prompt on complete: [ON/OFF])
-• Info: [ON/OFF]
-• Direction: [ON/OFF]
-• CS Knowledge: [ON/OFF]
-• Quiz: [ON/OFF]
+• Learning triggers:
+  - On code write: [ON/OFF]
+  - On task complete: [ON/OFF]
+  - On question: [ON/OFF]
+  - On all responses: [ON/OFF]
+• Stash mode: [ON/OFF] (prompt on complete: [ON/OFF])
+• Features:
+  - Info: [ON/OFF]
+  - Direction: [ON/OFF]
+  - CS Knowledge: [ON/OFF]
+  - Quiz: [ON/OFF]
 • Language: [en/ko]
 • Storage: [local/project]
 
 What would you like to change?
 1) Change level (Bronze/Silver/Gold/Platinum/Diamond)
-2) Toggle auto-explanation ON/OFF
-3) Configure learning timing (real-time / save for later)
+2) Configure learning triggers
+3) Configure stash mode
 4) Configure individual features
 5) Change language
 6) Change storage location
@@ -125,9 +127,10 @@ Directly change a specific setting.
 | Key | Description | Valid Values |
 |-----|-------------|--------------|
 | `level` | Learning level | bronze, silver, gold, platinum, diamond |
-| `trigger` | Auto-explanation on task complete | on, off |
-| `passive` | While working (real-time learning) | on, off |
-| `passive_frequency` | Real-time learning frequency | auto, high, medium, low |
+| `trigger_code_write` | Learn when writing code | on, off |
+| `trigger_task_complete` | Learn when completing tasks | on, off |
+| `trigger_question` | Learn when answering questions | on, off |
+| `trigger_all` | Learn on all responses | on, off |
 | `stash` | Save for later (stash learning) | on, off |
 | `stash_prompt` | Suggest saving on task complete | on, off |
 | `info` | What & why explanations | on, off |
@@ -148,9 +151,10 @@ If user provides an unknown key:
 
 Available settings:
 • level (bronze/silver/gold/platinum/diamond) - Learning level
-• trigger (on/off) - Auto-explanation on task complete
-• passive (on/off) - While working (real-time learning)
-• passive_frequency (auto/high/medium/low) - Real-time learning frequency
+• trigger_code_write (on/off) - Learn when writing code
+• trigger_task_complete (on/off) - Learn when completing tasks
+• trigger_question (on/off) - Learn when answering questions
+• trigger_all (on/off) - Learn on all responses
 • stash (on/off) - Save for later (stash learning)
 • stash_prompt (on/off) - Suggest saving on task complete
 • info (on/off) - What & why explanations
@@ -161,6 +165,7 @@ Available settings:
 • storage (local/project) - Config file location
 
 Example: /learn-quest:config level gold
+Example: /learn-quest:config trigger_code_write on
 ```
 
 ### Invalid Value

@@ -180,43 +180,59 @@ Enable this feature?
 > Enter 1 or 2
 ```
 
-### Step 9: Learning Timing
+### Step 9: Learning Timing (Trigger Conditions)
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🎯 Learning Timing
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-When should Learn Quest help you learn?
+When should Learn Quest provide learning points?
+(You can select multiple options)
 
-1) While working (Recommended)
-   → Get explanations in real-time as Claude writes code
+1) When writing code (Recommended)
+   → Get learning points when Claude writes/modifies code
 
-2) Save for later
-   → Save learning points when busy, study when free
+2) When completing tasks
+   → Get learning points when a feature/task is done
 
-3) Both
-   → Real-time explanations + save for later
+3) When answering questions
+   → Get learning points when Claude answers your questions
 
-4) Only when I ask
-   → Only when running /learn-quest:explain
+4) All responses
+   → Always provide learning points
 
-> Enter a number (1-4)
+5) Only when I ask
+   → Only with /learn-quest:explain command
+
+> Enter numbers separated by commas (e.g., 1,2)
 ```
 
-If user selects 1 or 3 (includes real-time), ask about frequency:
+**Mapping to config:**
+- Option 1: `trigger.on_code_write: true`
+- Option 2: `trigger.on_task_complete: true`
+- Option 3: `trigger.on_question: true`
+- Option 4: `trigger.on_all: true` (overrides others)
+- Option 5: All triggers set to `false`
+
+### Step 9b: Stash Mode
+
 ```
-📊 How often should learning elements appear?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📦 Stash Mode
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-1) Auto   - Adjusts based on context (Recommended)
-2) High   - Almost every opportunity
-3) Medium - Moderate frequency
-4) Low    - Rarely, only key concepts
+Too busy to learn right now?
+Save learning points and study later!
 
-> Enter a number (1-4)
+Enable Stash mode?
+1) Yes (Recommended) - Save points for later study
+2) No - I'll learn in real-time only
+
+> Enter 1 or 2
 ```
 
-If user selects 2 or 3 (includes save for later), ask about prompt:
+If user selects 1, ask about auto-prompt:
 ```
 📦 Prompt to save after completing tasks?
 
@@ -230,10 +246,10 @@ Learn Quest can ask if you want to save learning points.
 ```
 
 **Mapping to config:**
-- Option 1: `passive.enabled: true`, `stash.enabled: false`
-- Option 2: `passive.enabled: false`, `stash.enabled: true`
-- Option 3: `passive.enabled: true`, `stash.enabled: true`
-- Option 4: `passive.enabled: false`, `stash.enabled: false`
+- Stash Yes: `stash.enabled: true`
+- Stash No: `stash.enabled: false`
+- Prompt Yes: `stash.prompt_on_complete: true`
+- Prompt No: `stash.prompt_on_complete: false`
 
 ### Step 10: Confirmation
 
@@ -244,9 +260,12 @@ Learn Quest can ask if you want to save learning points.
 Your configuration:
 • Level: [selected level]
 • Language: English
-• Learning timing:
-  - While working: [ON/OFF] (frequency: [frequency])
-  - Save for later: [ON/OFF] (prompt on complete: [ON/OFF])
+• Learning triggers:
+  - On code write: [ON/OFF]
+  - On task complete: [ON/OFF]
+  - On question: [ON/OFF]
+  - On all responses: [ON/OFF]
+• Stash mode: [ON/OFF] (prompt on complete: [ON/OFF])
 • Features:
   - Info: [ON/OFF]
   - Direction: [ON/OFF]
@@ -414,43 +433,59 @@ Claude가 작업 완료 후 이런 제안을 보게 돼요:
 > 1 또는 2를 입력하세요
 ```
 
-### Step 9: Learning Timing
+### Step 9: Learning Timing (Trigger Conditions)
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🎯 학습 타이밍 설정
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Learn Quest가 언제 학습을 도와줄까요?
+Learn Quest가 언제 학습 포인트를 제공할까요?
+(복수 선택 가능)
 
-1) 작업 중 바로 (권장)
-   → Claude가 코드 작성하면서 실시간으로 설명
+1) 코드 작성 시 (권장)
+   → Claude가 코드를 작성/수정할 때
 
-2) 나중에 따로
-   → 바쁠 때 저장해두고, 시간 날 때 공부
+2) 작업/기능 완성 시
+   → 기능이나 작업이 완료될 때
 
-3) 둘 다
-   → 실시간 설명도 받고, 저장도 가능
+3) 질문에 답변할 때
+   → Claude가 질문에 답변할 때
 
-4) 직접 요청할 때만
-   → /learn-quest:explain 실행했을 때만 학습
+4) 모든 응답에서
+   → 항상 학습 포인트 제공
 
-> 번호를 입력하세요 (1-4)
+5) 직접 요청할 때만
+   → /learn-quest:explain 명령어로만
+
+> 쉼표로 구분해서 입력하세요 (예: 1,2)
 ```
 
-사용자가 1 또는 3을 선택하면 (실시간 학습 포함) 빈도를 물어봅니다:
+**설정값 매핑:**
+- 1번: `trigger.on_code_write: true`
+- 2번: `trigger.on_task_complete: true`
+- 3번: `trigger.on_question: true`
+- 4번: `trigger.on_all: true` (다른 옵션 무시)
+- 5번: 모든 trigger를 `false`로
+
+### Step 9b: Stash Mode
+
 ```
-📊 학습 설명이 얼마나 자주 나타날까요?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📦 Stash 모드
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-1) 자동   - 상황에 맞게 조절 (권장)
-2) 높음   - 거의 모든 학습 기회에
-3) 보통   - 적당한 빈도로
-4) 낮음   - 드물게, 핵심 개념만
+지금은 바빠서 학습할 시간이 없나요?
+학습 포인트를 저장해두고 나중에 공부할 수 있어요!
 
-> 번호를 입력하세요 (1-4)
+Stash 모드를 활성화할까요?
+1) 예 (권장) - 나중에 공부할 수 있게 저장
+2) 아니오 - 실시간 학습만 할게요
+
+> 1 또는 2를 입력하세요
 ```
 
-사용자가 2 또는 3을 선택하면 (나중에 학습 포함) 저장 제안을 물어봅니다:
+사용자가 1을 선택하면 자동 제안 여부를 물어봅니다:
 ```
 📦 작업 완료 시 저장을 제안할까요?
 
@@ -464,10 +499,10 @@ Learn Quest가 언제 학습을 도와줄까요?
 ```
 
 **설정값 매핑:**
-- 1번: `passive.enabled: true`, `stash.enabled: false`
-- 2번: `passive.enabled: false`, `stash.enabled: true`
-- 3번: `passive.enabled: true`, `stash.enabled: true`
-- 4번: `passive.enabled: false`, `stash.enabled: false`
+- Stash 예: `stash.enabled: true`
+- Stash 아니오: `stash.enabled: false`
+- 제안 예: `stash.prompt_on_complete: true`
+- 제안 아니오: `stash.prompt_on_complete: false`
 
 ### Step 10: Confirmation
 
@@ -478,9 +513,12 @@ Learn Quest가 언제 학습을 도와줄까요?
 설정 내용:
 • 레벨: [선택한 레벨]
 • 언어: 한국어
-• 학습 타이밍:
-  - 작업 중 실시간 학습: [ON/OFF] (빈도: [빈도])
-  - 나중에 학습 (저장): [ON/OFF] (완료 시 제안: [ON/OFF])
+• 학습 트리거:
+  - 코드 작성 시: [ON/OFF]
+  - 작업 완성 시: [ON/OFF]
+  - 질문 답변 시: [ON/OFF]
+  - 모든 응답: [ON/OFF]
+• Stash 모드: [ON/OFF] (완료 시 제안: [ON/OFF])
 • 기능:
   - Info: [ON/OFF]
   - Direction: [ON/OFF]
@@ -540,7 +578,10 @@ Use these when suggesting a level to the user:
   "level": "silver",
   "language": "en",
   "trigger": {
-    "on_task_complete": true
+    "on_code_write": true,
+    "on_task_complete": true,
+    "on_question": false,
+    "on_all": false
   },
   "features": {
     "info": true,
@@ -548,9 +589,9 @@ Use these when suggesting a level to the user:
     "cs_knowledge": true,
     "quiz": false
   },
-  "passive": {
+  "stash": {
     "enabled": true,
-    "frequency": "auto"
+    "prompt_on_complete": true
   },
   "storage": "local"
 }
@@ -563,12 +604,16 @@ Use these when suggesting a level to the user:
    - 1 → "en"
    - 2 → "ko"
 
-8. **Passive mode mapping:**
-   - 1 → enabled: true
-   - 2 → enabled: false
+8. **Trigger mapping (Step 9):**
+   - 1 → `trigger.on_code_write: true`
+   - 2 → `trigger.on_task_complete: true`
+   - 3 → `trigger.on_question: true`
+   - 4 → `trigger.on_all: true`
+   - 5 → All triggers `false`
+   - Multiple selections: Set each selected trigger to `true`
 
-9. **Frequency mapping:**
-   - 1 → "auto"
-   - 2 → "high"
-   - 3 → "medium"
-   - 4 → "low"
+9. **Stash mapping (Step 9b):**
+   - 1 → `stash.enabled: true`
+   - 2 → `stash.enabled: false`
+   - Prompt 1 → `stash.prompt_on_complete: true`
+   - Prompt 2 → `stash.prompt_on_complete: false`

@@ -7,6 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.2] - 2026-01-30
+
+### Added
+- **Learning Trigger System** - Fine-grained control over when learning points appear
+  - `trigger.on_code_write` - When Claude writes/modifies code
+  - `trigger.on_task_complete` - When completing tasks/features
+  - `trigger.on_question` - When answering questions
+  - `trigger.on_all` - Always provide learning points
+  - Multiple triggers can be enabled simultaneously
+
+### Changed
+- **Mandatory Learning Points** - Learning points are now REQUIRED (not optional) when trigger conditions are met
+- **session-start.sh** - Complete rewrite to read all settings and generate strong instructions
+- **Setup Step 9** - Now supports multiple trigger selection with comma-separated input
+- **Setup Step 9b** - Stash mode configuration separated into its own step
+- **Config menu** - Updated to reflect new trigger options
+
+### Removed
+- `passive.enabled` and `passive.frequency` settings (replaced by trigger system)
+
+### Migration
+- Existing configs with `passive.enabled: true` should set `trigger.on_code_write: true` and `trigger.on_task_complete: true`
+
 ## [0.2.1] - 2026-01-28
 
 ### Changed
